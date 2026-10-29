@@ -12,6 +12,7 @@ const translations = {
     downloadOn: "Descárgala en",
     comingSoon: "Próximamente en",
     appStoreAria: "Descargar PeixeScan en App Store",
+    appStoreBadge: "./assets/app-store-es.svg",
     googlePlayAria: "Próximamente en Google Play",
     fishAccessible: "Descubrir un pez",
     fishCaught: "Tarjeta descubierta: {species}",
@@ -50,6 +51,7 @@ const translations = {
     downloadOn: "Download on the",
     comingSoon: "Coming soon on",
     appStoreAria: "Download PeixeScan on the App Store",
+    appStoreBadge: "./assets/app-store-en.svg",
     googlePlayAria: "Coming soon on Google Play",
     fishAccessible: "Discover a fish",
     fishCaught: "Card discovered: {species}",
@@ -88,6 +90,7 @@ const translations = {
     downloadOn: "Descárgaa na",
     comingSoon: "Proximamente en",
     appStoreAria: "Descargar PeixeScan na App Store",
+    appStoreBadge: "./assets/app-store-es.svg",
     googlePlayAria: "Proximamente en Google Play",
     fishAccessible: "Descubrir un peixe",
     fishCaught: "Tarxeta descuberta: {species}",
@@ -128,6 +131,9 @@ function setLanguage(language, remember = false) {
   });
   document.querySelectorAll("[data-i18n-aria]").forEach((element) => {
     element.setAttribute("aria-label", copy[element.dataset.i18nAria]);
+  });
+  document.querySelectorAll("[data-i18n-src]").forEach((element) => {
+    element.setAttribute("src", copy[element.dataset.i18nSrc]);
   });
   document.querySelectorAll("[data-language]").forEach((button) => {
     const active = button.dataset.language === selected;
