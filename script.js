@@ -409,16 +409,15 @@ async function playIntro() {
     window.clearInterval(bubbleTimer);
     swimming.cancel();
     tailSwimming.cancel();
-    frame.animate(
+    const framing = frame.animate(
       [{ opacity: 0 }, { opacity: 1 }],
       { duration: 230, easing: "ease-out", fill: "forwards" },
     );
-    await pause(180);
     const photo = flash.animate(
       [{ opacity: 0 }, { opacity: 0.75, offset: 0.2 }, { opacity: 0 }],
       { duration: 260, easing: "ease-out" },
     );
-    await photo.finished;
+    await Promise.all([framing.finished, photo.finished]);
     await pause(180);
 
     const shiftX = targetX - captureX;
